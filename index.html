@@ -3,30 +3,65 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sayan Saha | Engineering Portfolio</title>
-  <link rel="stylesheet" href="css/styles.css" />
+  <title>Sayan Saha | Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <button class="toggle-btn" onclick="document.body.classList.toggle('dark')">Toggle Dark Mode</button>
     <h1>Sayan Saha</h1>
+    <p class="byline">Engineering Student | Builder | Innovator</p>
     <nav>
-      <a href="index.html">Home</a>
-      <a href="projects.html">Projects</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
+      <a href="#about">About Me</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
     </nav>
   </header>
 
   <main>
-    <section class="hero">
-      <h2>Engineering Portfolio</h2>
-      <p>Welcome to my project showcase. Explore my work in robotics, aerospace, and hardware systems.</p>
+    <section id="about" class="card">
+      <h2>About Me</h2>
+      <details>
+        <summary>Click to read more</summary>
+        <p>I'm a 2A Mechatronics Engineering student at the University of Waterloo. Passionate about aerospace, autonomous systems, and robotics.</p>
+      </details>
+    </section>
+
+    <section id="experience" class="card">
+      <h2>Experience</h2>
+      <details>
+        <summary>Click to read more</summary>
+        <ul>
+          <li>UW Formula Electric Aerodynamics Subteam</li>
+          <li>Logistics Director, University Engineering Competition</li>
+          <li>Content Director, Junior High Science Contest</li>
+        </ul>
+      </details>
+    </section>
+
+    <section id="projects" class="card">
+      <h2>Projects</h2>
+      <details>
+        <summary>Click to read more</summary>
+        <ul>
+          <li>Autonomous Drone Navigation</li>
+          <li>Mini Wind Tunnel</li>
+          <li>IoT Stuffed Animal</li>
+        </ul>
+      </details>
+    </section>
+
+    <section id="contact" class="card">
+      <h2>Contact</h2>
+      <details>
+        <summary>Click to read more</summary>
+        <p>Email: sayan.saha@email.com<br>LinkedIn: <a href="#">linkedin.com/in/sayansaha</a></p>
+      </details>
     </section>
   </main>
 
   <footer>
-    <p>© 2025 Sayan Saha</p>
+    <p>&copy; 2025 Sayan Saha</p>
   </footer>
 </body>
 </html>
