@@ -1,35 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Projects | Sayan Saha</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Sayan Saha</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header>
-    <h1>Projects</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About Me</a>
-      <a href="experience.html">Experience</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
-
-  <main>
-    <section class="card">
-      <ul>
-        <li><strong>IoT Stuffed Animal:</strong> A Wi-Fi-enabled plush toy with light-up features and remote control</li>
-        <li><strong>Custom Blender:</strong> Built for gravel crushing using stacked blades and a custom shaft</li>
-        <li><strong>Mini Wind Tunnel:</strong> Designed for testing small-scale aerodynamic components</li>
-        <li><strong>Autonomous Drone:</strong> Navigation and mapping prototype</li>
-      </ul>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 Sayan Saha</p>
-  </footer>
+    <header>
+        <nav>
+            <button id="menu-btn">☰</button>
+            <div id="menu">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Me</a>
+                <a href="experience.html">Experience</a>
+                <a href="projects.html">Projects</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </nav>
+    </header>
+    <main class="projects-page">
+        <section class="projects">
+            <h2>Projects</h2>
+            <div class="project-card">
+                <img src="assets/images/project1.jpg" alt="Project 1">
+                <div class="card-info">
+                    <h3>Project Title 1</h3>
+                    <p class="tags">#Mechatronics #Space</p>
+                    <p>A brief description of the project. This can include the goal, methods, and results.</p>
+                    <a href="project1.html">View Project</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="assets/images/project2.jpg" alt="Project 2">
+                <div class="card-info">
+                    <h3>Project Title 2</h3>
+                    <p class="tags">#Engineering #Robotics</p>
+                    <p>A brief description of another project. What problem it addresses and the impact it could have.</p>
+                    <a href="project2.html">View Project</a>
+                </div>
+            </div>
+            <!-- Add more project cards as needed -->
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Sayan Saha</p>
+        <a href="mailto:sayan@example.com">✉</a>
+        <a href="https://www.linkedin.com/in/sayansaha">🔗</a>
+    </footer>
+    <script src="js/script.js"></script>
 </body>
 </html>

@@ -1,63 +1,138 @@
-/* Reset default margin and padding */
+/* General Styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 body {
   font-family: 'Arial', sans-serif;
-  background-color: #000;
+  background-color: #fff;
+  color: #333;
+  transition: background-color 0.3s;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Header & Navigation */
+header {
+  background-color: #333;
+  padding: 20px;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#menu-btn {
+  font-size: 30px;
+  color: white;
+  background: none;
+  border: none;
+}
+#menu {
+  display: none;
+  background-color: #444;
+  position: absolute;
+  top: 60px;
+  right: 20px;
+  width: 200px;
+  text-align: center;
+}
+#menu a {
+  display: block;
+  padding: 10px;
+  color: white;
+}
+#menu a:hover {
+  background-color: #555;
+}
+
+/* Home Page */
+.home-page {
+  text-align: center;
+  padding: 50px;
+}
+.splash {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+}
+.profile-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+.landing-text h1 {
+  font-size: 40px;
+  font-weight: bold;
+  color: #2C3E50;
+}
+.landing-text p {
+  font-size: 18px;
+  color: #7F8C8D;
+}
+
+/* Links Section */
+.links a {
+  display: inline-block;
+  margin: 20px;
+  padding: 10px 20px;
+  background-color: #2980B9;
+  color: white;
+  font-size: 18px;
+  border-radius: 5px;
+}
+.links a:hover {
+  background-color: #1D6C84;
+}
+
+/* Footer */
+footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #333;
+  color: white;
+}
+footer a {
+  font-size: 20px;
+}
+
+/* Dark/Light Theme Toggle (Optional) */
+body.dark-theme {
+  background-color: #333;
   color: #fff;
 }
 
-header {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-  background-color: #111;
+/* Timeline Styles */
+.timeline-container {
+  position: relative;
+  margin-left: 50px;
+  padding-left: 30px;
+  border-left: 2px solid #2980B9;
 }
-
-h1 {
-  font-size: 4rem;
-  letter-spacing: 1rem;
+.timeline-item {
+  margin-bottom: 30px;
 }
-
-.subtitle {
-  font-size: 1.2rem;
-  margin-top: 10px;
+.timeline-date {
+  position: absolute;
+  left: -60px;
+  font-size: 18px;
+  color: #2980B9;
+  font-weight: bold;
 }
-
-.scroll-down {
-  margin-top: 20px;
-  font-size: 1.5rem;
-  color: #58a6ff;
-  text-decoration: none;
+.timeline-content {
+  margin-left: 20px;
 }
-
-.scroll-down:hover {
-  text-decoration: underline;
+.timeline-content h3 {
+  font-size: 20px;
+  color: #2C3E50;
 }
-
-section {
-  padding: 50px 20px;
-  background-color: #222;
-}
-
-footer {
-  text-align: center;
-  padding: 20px;
-  background-color: #111;
-}
-
-footer p {
-  color: #888;
-}
-
-/* Smooth Scroll Effect */
-html {
-  scroll-behavior: smooth;
+.timeline-content p {
+  color: #7F8C8D;
+  font-size: 16px;
 }
