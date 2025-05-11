@@ -1,0 +1,25 @@
+/* src/index.css */
+body {
+  margin: 0;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #1a1a1a;
+  color: #f1f1f1;
+}
+
+h1, h2 {
+  color: #f1f1f1;
+}
+
+a {
+  color: #a0c4ff;
+}
+
+a:hover {
+  color: #89b2f4;
+}
+
+img {
+  border-radius: 0.5rem;
+}
+
+/* Optional: Add dark mode toggle button in future */
