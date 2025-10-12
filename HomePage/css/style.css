@@ -219,6 +219,11 @@ h6,
     background-repeat: no-repeat;
 } */
 
+/* Center all titles sitewide */
+h1, h2, h3, h4, h5, h6 {
+  text-align: center !important;
+}
+
 /* Hero Header */
 .hero-header {
   padding: 4rem 0; /* reduced from 16rem to make image/text align better */
