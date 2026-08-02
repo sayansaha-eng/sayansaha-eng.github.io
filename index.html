@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sayan Saha | Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="preload" as="image" href="profile-hover.jpg">
 </head>
@@ -46,20 +47,6 @@
                 <h3>WatArrow Aircraft Design</h3>
                 <span class="tech-stack">Leadership · Aerodynamics · Design</span>
             </div>
-
-            <!-- Project Card 2 -->
-            <div class="card" onclick="openModal('modal2')">
-                <img src="project2-thumb.jpg" alt="Drone Propeller" class="card-img">
-                <h3>Drone Propeller Optimization</h3>
-                <span class="tech-stack">PCA · Bayesian Optimization · 3D Printing</span>
-            </div>
-
-            <!-- Project Card 3 -->
-            <div class="card" onclick="openModal('modal3')">
-                <img src="project3-thumb.jpg" alt="Autonomous Landing" class="card-img">
-                <h3>Autonomous Multicopter Landing</h3>
-                <span class="tech-stack">Simulink · ArduPilot · Computer Vision</span>
-            </div>
         </div>
     </section>
 
@@ -100,10 +87,10 @@
     <!-- CONTACT SECTION -->
     <section id="contact" class="section">
         <h2>Contact</h2>
-        <div class="contact-info">
-    <p><span class="contact-label">Email:</span> <a href="mailto:s25saha@uwaterloo.ca">s25saha@uwaterloo.ca</a></p>
-    <p><span class="contact-label">LinkedIn:</span> <a href="https://linkedin.com/in/sayan-s" target="_blank">linkedin.com/in/sayan-s</a></p>
-</div>
+    <div class="contact-info">
+        <p><i class="fa-solid fa-envelope contact-icon"></i> <a href="mailto:s25saha@uwaterloo.ca">s25saha@uwaterloo.ca</a></p>
+        <p><i class="fa-brands fa-linkedin contact-icon"></i> <a href="https://linkedin.com/in/sayan-s" target="_blank">linkedin.com/in/sayan-s</a></p>
+    </div>
     </section>
 
     <!-- MODALS FOR PROJECT DETAILS -->
@@ -114,7 +101,7 @@
             <span class="close" onclick="closeModal('modal1')">&times;</span>
             <h2>WatArrow Aircraft Design</h2>
             
-            <img src="project1-full.jpg" alt="WatArrow Aircraft Design" class="modal-img">
+            <img src="project1-1.jpg" alt="WatArrow Aircraft Design" class="modal-img">
             
             <div class="modal-section">
                 <h3>Goal</h3>
@@ -126,64 +113,29 @@
                 <p>Worked closely with the WatArrow engineering team, including structural and aerodynamic sub-teams.</p>
             </div>
             
+            <figure>
+            <img src="project1-2.png" class="modal-img" style="width: 50%; max-height: 500px;">
+            <figcaption>Final machined version.</figcaption>
+            <figure>
+
+            <div class="image-row">
+                    <!-- Left Image + Caption -->
+                    <figure>
+                        <img src="project1-2.png" alt="First prototype" class="modal-img">
+                        <figcaption>Early 3D printed iteration made from PETG and PLA.</figcaption>
+                    </figure>
+                    <!-- Right Image + Caption -->
+                    <figure>
+                        <img src="project1-2.png" alt="Second prototype" class="modal-img">
+                        <figcaption>Final machined version made from aluminum and steel.</figcaption>
+                    </figure>
+            </div>
+
             <div class="modal-section">
                 <h3>Results</h3>
                 <ul>
                     <li>Successfully drafted comprehensive sponsorship packages to secure funding.</li>
                     <li>Optimized lift capacities for both Micro and Advanced competition classes.</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal 2 -->
-    <div id="modal2" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('modal2')">&times;</span>
-            <h2>Drone Propeller Optimization</h2>
-            
-            <img src="project2-full.jpg" alt="Drone Propeller Optimization" class="modal-img">
-            
-            <div class="modal-section">
-                <h3>Goal</h3>
-                <p>To perform a data-driven design optimization focused on maximizing lift while minimizing the acoustic noise of drone propellers.</p>
-            </div>
-
-            <div class="modal-section">
-                <h3>Approach</h3>
-                <ul>
-                    <li>Established optimization loops utilizing Principal Component Analysis (PCA).</li>
-                    <li>Applied Bayesian optimization to refine parameters iteratively.</li>
-                    <li>Prototyped iterations using 3D-printing technologies.</li>
-                </ul>
-            </div>
-            
-            <div class="modal-section">
-                <h3>Results</h3>
-                <p>Achieved a quantifiable reduction in acoustic noise signatures while maintaining required thrust margins.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal 3 -->
-    <div id="modal3" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('modal3')">&times;</span>
-            <h2>Autonomous Multicopter Landing</h2>
-            
-            <img src="project3-full.jpg" alt="Autonomous Multicopter Landing" class="modal-img">
-            
-            <div class="modal-section">
-                <h3>Goal</h3>
-                <p>To develop and test a camera-assisted autonomous landing sequence for a multicopter utilizing Pixhawk flight computers running ArduPilot.</p>
-            </div>
-
-            <div class="modal-section">
-                <h3>Implementation</h3>
-                <ul>
-                    <li>Integrated Simulink plant models with an Unreal Engine simulation environment.</li>
-                    <li>Developed a custom computer vision pipeline for real-time ArUco marker pose estimation.</li>
-                    <li>Executed both software-in-the-loop (SITL) and hardware-in-the-loop (HITL) testing routines.</li>
                 </ul>
             </div>
         </div>

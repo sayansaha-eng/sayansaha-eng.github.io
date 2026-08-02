@@ -23,6 +23,7 @@ body {
     align-items: center;
 }
 
+
 /* Navigation */
 nav {
     width: 100%;
@@ -233,8 +234,20 @@ h2 {
     text-decoration: none;
 }
 
-.contact-label {
-    color: var(--accent); /* This uses your theme's changing accent color */
+/* Styles the icons with your theme color and sets a uniform size */
+.contact-icon {
+    color: var(--accent);
+    font-size: 1.2rem;
+    width: 30px; /* Ensures all icons take up the same width so text aligns neatly */
+    text-align: center;
+    margin-right: 15px;
+}
+
+/* Uses flexbox to perfectly vertically center the icon with the text */
+.contact-info p {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
 }
 
 /* Modal (Popup for projects) */
@@ -281,10 +294,13 @@ h2 {
 .modal-img {
     width: 100%;
     height: auto;
-    max-height: 300px;
-    object-fit: cover;
+    max-height: 400px; /* Increased slightly to give taller images more room */
+    object-fit: contain; /* Prevents cropping and respects aspect ratio */
     border-radius: 8px;
-    margin: 20px 0;
+    
+    /* These three lines ensure the image stays centered if it's narrower than the modal */
+    display: block; 
+    margin: 20px auto; 
 }
 
 .modal-section {
@@ -311,4 +327,46 @@ h2 {
 
 .modal-section li {
     margin-bottom: 5px;
+}
+
+/* Side-by-side image container */
+.image-row {
+    display: flex;
+    gap: 20px; /* The space between the two images */
+    margin: 20px 0;
+}
+
+/* Individual image wrappers */
+.image-row figure {
+    margin: 0;
+    flex: 1; /* This forces both figures to take up exactly half the space */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Adjust the image to fill its half-width box perfectly */
+.image-row .modal-img {
+    margin: 0; /* Removes the auto-centering margin we added earlier */
+    width: 100%;
+}
+
+/* Caption text styling */
+figcaption {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    text-align: center;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+/* Remove bottom margin from images inside figures to pull the caption closer */
+figure .modal-img {
+    margin-bottom: 0;
+}
+
+/* Make them stack vertically on small phone screens so they aren't too squished */
+@media (max-width: 600px) {
+    .image-row {
+        flex-direction: column;
+    }
 }
