@@ -1,10 +1,10 @@
 :root {
-    --bg-color: #0f1612; /* Deep dark green/grey from your reference */
-    --text-primary: #f0f0f0;
-    --text-secondary: #a0aab2;
-    --card-bg: rgba(255, 255, 255, 0.03);
-    --card-border: rgba(255, 255, 255, 0.1);
-    --accent: #5e8a75;
+    --bg-color: #084C61;
+    --text-primary: #d0edf9;
+    --text-secondary: #FFC857;
+    --card-bg: #ffffff08;
+    --card-border: #ffffff1a;
+    --accent: #63d4f0;
 }
 
 * {
@@ -27,9 +27,9 @@ body {
 nav {
     width: 100%;
     padding: 20px 0;
-    position: sticky;
+    position: relative;
     top: 0;
-    background: rgba(15, 22, 18, 0.9);
+    background: var(--bg-color);
     backdrop-filter: blur(10px);
     z-index: 100;
     text-align: center;
@@ -55,9 +55,18 @@ nav {
     text-align: left;
 }
 
-h1, h2, h3 {
+/* Normal weight for subheadings */
+h2, h3, h4 {
     font-weight: 400;
     margin-bottom: 15px;
+}
+
+/* Bold weight for your main title */
+h1 {
+    font-weight: 600; 
+    margin-bottom: 15px;
+    color: var(--text-secondary);
+
 }
 
 h2 {
@@ -70,15 +79,17 @@ h2 {
     padding-bottom: 10px;
 }
 
+
+
 /* About Header */
 #about {
     text-align: center;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 .profile-pic {
-    width: 150px;
-    height: 150px;
+    width: 250px;
+    height: 250px;
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 20px;
@@ -86,14 +97,16 @@ h2 {
 }
 
 .subtitle {
-    color: var(--text-secondary);
+    color: var(--primary);
+    font-weight: 600; 
     margin-bottom: 20px;
+    font-size: 1.2rem;
 }
 
 .bio {
     max-width: 600px;
     margin: 0 auto;
-    color: var(--text-secondary);
+    color: var(--text-primary);
 }
 
 /* Cards Grid */
@@ -113,9 +126,11 @@ h2 {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
     border-radius: 12px;
-    padding: 25px;
+    padding: 20px;
     cursor: pointer;
     transition: transform 0.2s, background 0.3s;
+    display: flex;
+    flex-direction: column;
 }
 
 .card:hover {
@@ -123,15 +138,25 @@ h2 {
     background: rgba(255, 255, 255, 0.06);
 }
 
-.card p {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
+.card-img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 8px; /* Matches the card's rounded aesthetic */
     margin-bottom: 15px;
 }
 
+.card h3 {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    color: var(--accent)
+}
+
+
 .tech-stack {
     font-size: 0.8rem;
-    color: var(--accent);
+    color: var(--text-primary);
+    margin-top: auto; /* Pushes tech stack to the bottom */
 }
 
 /* Resume Timeline */
@@ -156,31 +181,60 @@ h2 {
 }
 
 .timeline-item {
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     position: relative;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0; 
 }
 
 .timeline-item::before {
     content: '';
     position: absolute;
     left: -25px;
-    top: 5px;
+    top: 6px;
     width: 10px;
     height: 10px;
     border-radius: 50%;
     background: var(--accent);
 }
 
-.date {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    margin-bottom: 8px;
+.timeline-item h4 {
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+    color: var(--accent);
 }
+
+.meta-info {
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    margin-bottom: 15px;
+}
+
+.meta-info span {
+    margin-right: 5px;
+}
+
+.timeline-item ul {
+    padding-left: 18px;
+    color: var(--text-primary);
+    font-size: 0.85rem;
+}
+
+.timeline-item li {
+    margin-bottom: 3px;
+}
+
 
 /* Contact Info */
 .contact-info a {
-    color: var(--accent);
+    color: var(--text-primary);
     text-decoration: none;
+}
+
+.contact-label {
+    color: var(--accent); /* This uses your theme's changing accent color */
 }
 
 /* Modal (Popup for projects) */
@@ -195,6 +249,7 @@ h2 {
     background-color: rgba(0,0,0,0.8); 
     align-items: center;
     justify-content: center;
+    overflow-y: auto; /* Allows scrolling if content is too tall */
 }
 
 .modal-content {
@@ -205,16 +260,55 @@ h2 {
     width: 80%;
     max-width: 600px;
     position: relative;
+    max-height: 90vh; /* Keeps it contained within the screen */
+    overflow-y: auto;
 }
 
 .close {
     color: var(--text-secondary);
-    float: right;
+    position: absolute;
+    right: 25px;
+    top: 25px;
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
 }
 
 .close:hover {
+    color: var(--accent);
+}
+
+.modal-img {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.modal-section {
+    margin-bottom: 25px;
+}
+
+.modal-section h3 {
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1rem;
+}
+
+.modal-section p, .modal-section ul {
     color: var(--text-primary);
+    font-size: 0.95rem;
+}
+
+.modal-section ul {
+    padding-left: 18px;
+}
+
+.modal-section li {
+    margin-bottom: 5px;
 }
