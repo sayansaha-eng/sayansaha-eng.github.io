@@ -207,10 +207,18 @@ h2 {
     color: var(--accent);
 }
 
+.timeline-item p {
+    margin-bottom: 5px;
+    font-size: 0.85em;
+    color: var(--text-primary);
+    font-weight: 200;
+}
+
 .meta-info {
     font-size: 0.85rem;
     color: var(--text-primary);
-    margin-bottom: 15px;
+    margin-bottom: 5px;
+    font-weight: 600;
 }
 
 .meta-info span {
@@ -369,4 +377,18 @@ figure .modal-img {
     .image-row {
         flex-direction: column;
     }
+}
+
+/* Container to keep the LinkedIn embed centered and responsive */
+.linkedin-embed-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    width: 100%;
+}
+
+/* Make sure the iframe doesn't break out of small screens */
+.linkedin-embed-container iframe {
+    max-width: 100%;
+    border-radius: 8px; /* Matches your modal image border radius */
 }

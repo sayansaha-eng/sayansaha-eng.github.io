@@ -31,7 +31,7 @@
         <p class="subtitle">Mechatronics Engineering @UWaterloo</p>
         <p class="bio">
             I'm passionate about systems integration and thrive at the intersection of mechanics, hardware, and software. 
-            Currently, I spend most of my time as the Co-Captain of WatArrow, UWaterloo's SAE Aero Design Team. 
+            Currently, I spend most of my time as the Co-Captain of WatArrow — UWaterloo's SAE Aero Design Team. 
             In my free time, I enjoy collegiate debate and astronomy. 
             J'apprends aussi le Français!
         </p>
@@ -41,46 +41,74 @@
     <section id="projects" class="section">
         <h2>Projects</h2>
         <div class="grid">
-            <!-- Project Card 1 -->
+
             <div class="card" onclick="openModal('modal1')">
                 <img src="project1-thumb.jpg" alt="WatArrow Aircraft" class="card-img">
                 <h3>WatArrow Aircraft Design</h3>
                 <span class="tech-stack">Leadership · Aerodynamics · Design</span>
             </div>
+
+            <div class="card" onclick="openModal('modal2')">
+                <img src="project1-thumb.jpg" alt="Heart Aerospace" class="card-img">
+                <h3>Heart Aerospace Actuator Testing</h3>
+                <span class="tech-stack">Python · CANopen · EWIS</span>
+            </div>
+
         </div>
     </section>
 
     <!-- RESUME SECTION -->
     <section id="resume" class="section">
         <h2>Experience</h2>
-        <a href="resume.pdf" download class="download-btn">Download PDF Resume</a>
+        <a href="resume.pdf" download class="download-btn">Download Resume</a>
         
         <div class="timeline">
-            <!-- Experience 1 -->
+
+            <div class="timeline-item">
+                <h4>Co-Captain</h4>
+                <div class="meta-info">
+                    <span class="company">WatArrow</span> &bull;&nbsp;
+                    <span class="date">May 2026 – Present</span> 
+                </div>     
+                <p>Leading engineering and business functions for a team of 35 students to compete in SAE Aero Design.<p>
+            </div>
+
             <div class="timeline-item">
                 <h4>Research Assistant</h4>
                 <div class="meta-info">
-                    <span class="company">Laboratory for Emerging Energy Research</span> &bull; 
-                    <span class="date"> May 2026 – Present</span>
+                    <span class="company">Laboratory for Emerging Energy Research</span> &bull;&nbsp;
+                    <span class="date"> Jan 2025 – Present</span>
                 </div>
-                <ul>
-                    <li>Researched and developed models for In-Situ Resource Utilization of lunar regolith.</li>
-                    <li>Conducted experimental testing and gathered performance data for energy applications.</li>
-                </ul>
+                <p>Investigating magnetic separation, milling, and combustion of lunar regolith for ISRU applications.</p>
             </div>
             
-            <!-- Experience 2 -->
             <div class="timeline-item">
-                <h4>Team Captain & Technical Lead</h4>
+                <h4>Systems Integration Engineering Intern</h4>
                 <div class="meta-info">
-                    <span class="company">WatArrow</span> &bull; 
-                    <span class="date">Sep 2025 – Apr 2026</span> 
+                    <span class="company">Heart Aerospace</span> &bull;&nbsp;
+                    <span class="date">Sep 2025 – Dec 2025</span> 
                 </div>
-                <ul>
-                    <li>Managed technical direction and team operations across Micro and Advanced classes for the SAE Aero Design East competition.</li>
-                    <li>Collaborated with co-lead Riya and team captain Josh to optimize aerodynamics and streamline structural assembly.</li>
-                </ul>
+                <p>Flight actuator testing and integration for Heart X1, the world's largest electric aircraft.</p>
             </div>
+
+            <div class="timeline-item">
+                <h4>Mechatronics Test Engineering Intern</h4>
+                <div class="meta-info">
+                    <span class="company">ATS Corporation</span> &bull;&nbsp;
+                    <span class="date">Jan 2025 – Apr 2025</span> 
+                </div>
+                <p>R&D for SuperTrak electromagnetic conveyance technology in the ATS Innovation Center.</p>
+            </div>
+
+            <div class="timeline-item">
+                <h4>Hardware Engineering Intern</h4>
+                <div class="meta-info">
+                    <span class="company">DropLab</span> &bull;&nbsp;
+                    <span class="date">May 2024 – Aug 2024</span> 
+                </div>
+                <p>PCB and mechanical design for microfluidic devices.</p>
+            </div>
+
         </div>
     </section>
 
@@ -95,7 +123,6 @@
 
     <!-- MODALS FOR PROJECT DETAILS -->
     
-    <!-- Modal 1 -->
     <div id="modal1" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal('modal1')">&times;</span>
@@ -141,6 +168,32 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('modal1')">&times;</span>
+            <h2>Heart Aerospace Actuator Testing</h2>
+            
+            <div class="modal-section">
+            <h3>Project Demo</h3>
+    
+                <div class="linkedin-embed-container">
+                    <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7424100639108050944?collapsed=1" 
+                            height="581" 
+                            width="504" 
+                            frameborder="0" 
+                            allowfullscreen="" 
+                            title="Embedded post">
+                    </iframe>
+                </div>
+                
+            </div>
+            
+        </div>
+    </div>
+
+
+
+
+<script src="script.js"></script>
 </body>
 </html>
