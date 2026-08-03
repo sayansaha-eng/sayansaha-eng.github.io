@@ -319,17 +319,28 @@ h2 {
     margin: 20px auto; 
 }
 
-.modal-section {
-    margin-bottom: 25px;
+
+
+.modal-section h2 {
+    font-weight: 600;
+    color: var(--accent);
+    margin-top: 20px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1.1rem;
 }
 
 .modal-section h3 {
     font-weight: 600;
-    color: var(--accent);
-    margin-bottom: 8px;
+    color: var(--text-secondary);
+    margin-bottom: 0px;
+    margin-top: 20px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    font-size: 1rem;
+    font-size: 0.95rem;
+
+ 
 }
 
 .modal-section h4 {
