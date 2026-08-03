@@ -332,17 +332,49 @@ h2 {
     font-size: 1rem;
 }
 
-.modal-section p, .modal-section ul {
+.modal-section h4 {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-top: 30px;
+    font-style: italic;
+}
+
+/* Create the dashed lines that stretch to fill empty space */
+.modal-section h4::before,
+.modal-section h4::after {
+    content: '';
+    flex: 1; /* This forces the lines to take up all remaining horizontal space */
+    border-bottom: 1px dashed var(--text-secondary); /* Uses your yellow accent color for the dashes */
+}
+
+/* Add breathing room between the text and the dashes */
+.modal-section h4::before {
+    margin-right: 15px;
+}
+
+.modal-section h4::after {
+    margin-left: 15px;
+}
+
+.modal-section p {
+    margin-top: 15px;
     color: var(--text-primary);
     font-size: 0.95rem;
 }
 
 .modal-section ul {
     padding-left: 18px;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    margin-left: 20px;
+    margin-top: 5px;
 }
 
 .modal-section li {
-    margin-bottom: 5px;
+    margin-bottom: 0px;
 }
 
 /* Side-by-side image container */
@@ -375,8 +407,13 @@ figcaption {
     font-style: italic;
 }
 
-/* Remove bottom margin from images inside figures to pull the caption closer */
+/* Add a default bottom margin to all images inside a figure */
 figure .modal-img {
+    margin-bottom: 30px; /* Adjust this value for how much space you want below captionless images */
+}
+
+/* Remove the bottom margin ONLY if the figure contains a figcaption */
+figure:has(figcaption) .modal-img {
     margin-bottom: 0;
 }
 

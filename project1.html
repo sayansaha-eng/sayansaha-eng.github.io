@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WatArrow Aircraft Design | Sayan Saha</title>
+    <title>Delta Wing Aircraft | Sayan Saha</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -24,45 +24,82 @@
         <a href="index.html#projects" class="download-btn">&larr; Return to Projects</a>
         
         <div class="project-page-content">
-            <h2>WatArrow Aircraft Design</h2>
-            
-            <img src="project1-1.jpg" alt="WatArrow Aircraft Design" class="modal-img">
-            
-            <div class="modal-section">
-                <h3>Goal</h3>
-                <p>To design, manufacture, and test a competitive aircraft architecture for the SAE Aero Design East competition.</p>
-            </div>
-            
-            <div class="modal-section">
-                <h3>Collaborators</h3>
-                <p>Worked closely with the WatArrow engineering team, including structural and aerodynamic sub-teams.</p>
-            </div>
+            <h2>WatArrow Delta-Wing Aircraft</h2>
             
             <figure>
-                <img src="project1-2.png" class="modal-img" style="width: 50%; max-height: 500px;">
-                <figcaption>Final machined version.</figcaption>
+                <img src="project1-thumb.png" alt="WatArrow delta-wing aircraft" class="modal-img" style="width: 100%; max-height: none;">
             </figure>
 
-            <div class="image-row">
+            <div class="modal-section">
+                <h3>Overview</h3>
+                <p>While serving as the Technical Lead for the WatArrow, I oversaw the development and flight testing of our first delta wing aircraft. This was a major project that involved lots of research, simulation, and design iteration. My contributions were primarily focused on CFD simulations and manufacturing.</p>
+            </div>
+            
+            <div class="modal-section">
+                <h3>CFD Simulations</h3>
+                <p>A new skill I picked up through this project was learning how to conduct CFD simulations in Ansys Fluent. These simulations helped me rapidly iterate through multiple designs, before settling on one that had a good balance between aerodynamic characteristics and manufacturability. The three main designs I simulated were:</p>
+                
+                <ul>
+                    <li>Smooth lifting body</li>
+                    <li>Low-poly lifting body</li>
+                    <li>Sharp-edged flat plate</li>
+                </ul>
+
+                <p>The figures below show the lift and drag curves for the 3 main designs, along with streamlines and pressure distribution for a blunt nose variant of the smooth lifting body.</p>
+
+                <figure>
+                    <img src="project1-2.png" alt="Summary of simulated designs" class="modal-img" style="width: 100%; max-height: none;">
+                    <figcaption>Lift and drag curves for the three main designs.</figcaption>
+                </figure>
+                
+                <div class="image-row">
+                    <!-- Left Image + Caption -->
                     <figure>
-                        <img src="project1-2.png" alt="First prototype" class="modal-img">
-                        <figcaption>Early 3D printed iteration made from PETG and PLA.</figcaption>
+                        <img src="project1-3.png" alt="Streamlines" class="modal-img">
+                        <figcaption>Streamlines for the blunt nose variant.</figcaption>
                     </figure>
+                    <!-- Right Image + Caption -->
                     <figure>
-                        <img src="project1-2.png" alt="Second prototype" class="modal-img">
-                        <figcaption>Final machined version made from aluminum and steel.</figcaption>
+                        <img src="project1-4.png" alt="Pressure distribution" class="modal-img">
+                        <figcaption>Pressure distribution for the blunt nose variant.</figcaption>
                     </figure>
+                </div>
+
+                <p>Although the smooth lifting body had the best lift and drag performance (as expected), I chose to pursue the low-poly lifting body for our first prototype since it was much easier to manufacture.</p>
             </div>
 
             <div class="modal-section">
-                <h3>Results</h3>
-                <ul>
-                    <li>Successfully drafted comprehensive sponsorship packages to secure funding.</li>
-                    <li>Optimized lift capacities for both Micro and Advanced competition classes.</li>
-                </ul>
+                <h3>Manufacturing</h3>
+                <p>Before beginning fabrication, I made a complete assembly in SolidWorks to help verify component designs and tolerances.</p>
+                
+                <figure>
+                    <img src="project1-5.png" alt="SolidWorks assembly" class="modal-img" style="width: 100%; max-height: none;">
+                    <figcaption>Complete SolidWorks assembly of the aircraft.</figcaption>
+                </figure>
+
+                <p>One of the main goals was to make it very easy to swap out components, so I designed everything to be easily installed onto a central carbon fiber fuselage. This required me to design and 3D print numerous mounts, with an emphasis on reducing weight as much as possible. For example, I was able to combine the tail and rear wing mount into a single component with a compression clamp for the carbon fiber fuselage.</p>
+                
+                <figure>
+                    <img src="project1-6.png" alt="Rear wing and tail mount" class="modal-img" style="width: 100%; max-height: none;">
+                    <figcaption>Rear wing and tail mount, featuring a compression clamp to secure it to the carbon fiber fuselage.</figcaption>
+                </figure>
+
+                <p>To improve aerodynamics, I designed the wing as a foamboard shell that covered all of the avionics components and batteries, rather than exposing them directly to the airflow. Lastly, I reused the carbon fiber landing gear I made for a previous project to keep the aircraft weight low.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3>Flight Testing</h3>
+                <p>We were able to test this aircraft over multiple days, beginning with taxi tests and then building up to short flights. The lessons we learned informed the design of the second delta-wing design, which was a smooth lifting body made with the use of a CNC mill.</p>
+                
+                <figure>
+                    <img src="project1-7.png" alt="Aircraft on runway" class="modal-img" style="width: 100%; max-height: none;">
+                    <figcaption>Delta-wing aircraft on the runway, piloted by Yang Li.</figcaption>
+                </figure>
+            
             </div>
         </div>
     </section>
 
 </body>
 </html>
+
