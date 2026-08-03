@@ -145,6 +145,12 @@ h2 {
     object-fit: cover;
     border-radius: 8px; /* Matches the card's rounded aesthetic */
     margin-bottom: 15px;
+    filter: grayscale(100%); /* Makes the image black and white */
+    transition: filter 0.3s ease; /* Creates a smooth fade effect */
+}
+
+.card:hover .card-img {
+    filter: grayscale(0%); /* Restores full color */
 }
 
 .card h3 {
