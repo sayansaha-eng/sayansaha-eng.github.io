@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robotic Palm Tracker | Sayan Saha</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+
+    <nav>
+        <div class="nav-links">
+            <a href="index.html#about">About</a>
+            <a href="index.html#projects">Projects</a>
+            <a href="index.html#resume">Resume</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+    </nav>
+
+    <section class="section">
+        <!-- Return Button -->
+        <a href="index.html#projects" class="download-btn">&larr; Return to Projects</a>
+        
+        <div class="project-page-content">
+            <h2>Robotic Palm Tracker</h2>
+            
+            <figure>
+                <img src="project5-2.gif" alt="Robotic palm tracker demo" class="modal-img" style="width: 100%; max-height: none;">
+            </figure>
+
+            <div class="modal-section">
+                <h2>Overview</h2>
+                <p>
+                    I designed a 2-axis palm tracking robot that uses computer vision to track the motion of a palm and mirrors it using servo motors on a 3D printed mount. 
+                </p>
+
+                <p>
+                    The robot consisted of two separate programs:
+                </p>
+                
+                <ul>
+                    <li>A Python script running on a laptop which used OpenCV and MediaPipe to identify a palm, generate coordinates to track it in real-time, and send data to an Arduino.</li>
+                    <li>An Arduino sketch written in C++ to read data from the laptop and control 2 servo motors to mirror movements of the palm in the x and y-axis.</li>
+                </ul>
+
+                <p>
+                    The first version of the computer vision program ran on a Raspberry Pi, but I later switched to a laptop due to camera driver issues. This is something I would like to revisit in the future, since the Pi is portable and could be used as the brains of a robot utilizing this palm tracker.
+                </p>
+                <p> 
+                    Additionally, to improve the smoothness of the tracking motion, I initially tried swapping the servos with stepper motors. This was unsuccessful, so I implemented a software fix by adding a low-pass filter in the Arduino’s C++ code to prevent sudden large movements.  
+                </p>
+
+            </div>
+            
+            <div class="modal-section">
+                <h2>Future Improvements</h2>
+                <p>
+                    I am planning to improve the functionality of this robot by:
+                </p>
+                
+                <ul>
+                    <li>Running the computer vision program on a Rasperry Pi with a PiCam, so that the PiCam can move around and track indefinitely.</li>
+                    <li>Adding an omnidirectional microphone array so that the robot can respond to voices and turn to find a person when a wake word is spoken.</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>
+

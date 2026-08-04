@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Aerospace Actuator Test Stand | Sayan Saha</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+
+    <nav>
+        <div class="nav-links">
+            <a href="index.html#about">About</a>
+            <a href="index.html#projects">Projects</a>
+            <a href="index.html#resume">Resume</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+    </nav>
+
+    <section class="section">
+        <!-- Return Button -->
+        <a href="index.html#projects" class="download-btn">&larr; Return to Projects</a>
+        
+        <div class="project-page-content">
+            <h2>Heart Aerospace Actuator Test Stand</h2>
+            
+            <div class="modal-section">
+            <h2>Internship Video</h2>
+                <div class="linkedin-embed-container">
+                    <iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7424100639108050944?collapsed=1" 
+                            height="581" 
+                            width="504" 
+                            frameborder="0" 
+                            allowfullscreen="" 
+                            title="Embedded post">
+                    </iframe>
+                </div>
+            </div>
+            
+            <div class="modal-section">
+                <h4>Photos are omitted due to confidentiality</h4>
+            </div>
+
+            <div class="modal-section">
+                <h2>Objective</h2>
+                <p>To certify the Heart X1 aircraft for flight, the flight control actuators had to be validated on the ground. My internship project was to design a comprehensive automated test bench to perform the validation.</p>
+                
+                <p>The test stand had to:</p>
+                <ul>
+                    <li>Simulate all possible aerodynamic loads on the actuators</li>
+                    <li>Be as flight representative as possible from an electrical, mechanical, and software controls perspective to determine fault conditions for each of these domains</li>
+                </ul>
+
+                <p>Some examples of tests that the team wanted to perform on the stand include:</p>
+                <ul>
+                    <li>Stall torque characterization</li>
+                    <li>PID tuning under load</li>
+                    <li>CANopen error handling</li>
+                    <li>Encoder calibration</li>
+                    <li>Over/undervoltage effects</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h2>Phase 1: Flight Hardware Bring-Up</h2>
+                <p>I started this project by bringing up the flight hardware for the test stand. This involved:</p>
+                <ul>
+                    <li>Actuator and inverter setup</li>
+                    <li>Encoder calibration</li>
+                    <li>Wiring harness design</li>
+                    <li>CANopen communication configuration</li>
+                </ul>
+                <p>Since a key goal was to automate the test stand, I used a Raspberry Pi and Python to control all of the above components. Doing so in a way that replicated the flight control architecture (e.g. using CANopen to communicate with the actuator from a Python script) was the biggest challenge since many of the tools and protocols were new to me, but I quickly became familiar with them.</p>
+            </div>
+
+            <div class="modal-section">
+                <h2>Phase 2: Peripheral Hardware Bring-Up</h2>
+                <p>The test stand would not be valuable without the ability to simulate aerodynamic loads on the actuators and collect sensor data. For actuator loading, I selected a servo motor and gearbox capable of applying the maximum predicted loads with a safety factor. This motor was only capable of being controlled over Modbus TCP, so I integrated that protocol into the Python scripts running on the Raspberry Pi.</p>
+                
+                <p>I also brought up sensors to collect data, including:</p>
+                <ul>
+                    <li>Thermistors for motor winding temperature measurements</li>
+                    <li>Strain gauge to validate simulated loads applied by the servo motor</li>
+                </ul>
+                
+                <p>To make it easier to monitor the actuators and sensor data in real-time during automated sequences, I connected all of the data streams to Sift, which allowed anyone on the team to access the information from the cloud.</p>
+                <p>An interesting problem that emerged was that when the actuators were back driven, the voltage surge damaged the encoders. To fix this, I added batteries to act as a sink during these situations.</p>
+            </div>
+
+            <div class="modal-section">
+                <h2>Phase 3: Develop &amp; Execute Test Plan</h2>
+                <p>With the test stand at an initial operational capacity, I ran some initial characterization tests, including:</p>
+                <ul>
+                    <li>Actuator temperature change under load</li>
+                    <li>Maximum load hold duration</li>
+                    <li>Back-drive torque requirements</li>
+                </ul>
+
+                <p>I also worked with other teams to determine what information they wanted from the stand. For example, the flight sciences team wanted the ability to simulate an entire flight by uploading a CSV flight profile with timestamped information about actuator position and expected loads, so I added this capability to the stand.</p>
+                
+                <p>As expected, not all tests were successful, so where necessary, I acted on the results to improve the reliability and functionality of the actuators. Some examples include:</p>
+                <ul>
+                    <li>Retuning the PID gains</li>
+                    <li>Modifying the EWIS to flip encoder directionality</li>
+                    <li>Adjusting actuator fault triggers and thresholds</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h2>Results</h2>
+                <p>The ground testing capabilities that this test stand provided allowed the entire team to gain much more confidence in Heart X1’s flight control system ahead of its first flight. It also allowed me to become very familiar with the aircraft’s actuators and inverters, which is why I was subsequently given the responsibility for all of the electrical and software work during 4 flight control system vibration testing campaigns.</p>
+            </div>
+
+            <figure>
+                <img src="project2-1.jpg" class="modal-img" alt="Christmas at Heart Aerospace" style="width: 100%; max-height: none;">
+                <figcaption>Christmas at Heart Aerospace! Photo credit: Alexander Alvarado.</figcaption>
+            </figure>
+
+        </div>
+    </section>
+
+</body>
+</html>

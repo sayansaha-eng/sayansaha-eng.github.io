@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regolith Blade Mill | Sayan Saha</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+
+    <nav>
+        <div class="nav-links">
+            <a href="index.html#about">About</a>
+            <a href="index.html#projects">Projects</a>
+            <a href="index.html#resume">Resume</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+    </nav>
+
+    <section class="section">
+        <!-- Return Button -->
+        <a href="index.html#projects" class="download-btn">&larr; Return to Projects</a>
+        
+        <div class="project-page-content">
+            <h2>Lunar Regolith Blade Mill</h2>
+            
+            <figure>
+                <img src="project7-2.png" alt="CAD model of blade mill" class="modal-img" style="width: 100%; max-height: none;">
+            </figure>
+
+            <div class="modal-section">
+                <h2>Project Overview</h2>
+                <p>As a part of my research work with the Laboratory of Emerging Energy Research (LEER) at the University of Waterloo, I was responsible for designing a blade mill for processing of lunar regolith. In November 2025, we were able to flight test the blade mill with regolith simulant in lunar gravity conditions during a parabolic flight with the National Research Council of Canada. A paper based on this project is currently under review and should be published in fall 2026, with an additional one to hopefully follow afterwards!</p>
+            </div>
+
+            <div class="modal-section">
+                <h2>Design</h2>
+                <p>The unique constraints imposed by the low gravity environment on the moon influenced many of my design choices for the blade mill. For example, I had to find a way to ensure that regolith particles floating in the milling chamber would experience sufficient agitation to encounter the blades.</p>
+                
+                <p>Initially, I considered a design with a single blade mounted on a linear actuator, but I determined that it would be minimally effective at crushing floating particles and introduce a risk of jamming. For the final design, I chose a stacked blade configuration with 5 blades spaced vertically on a single shaft. Then, based on motor specs, I was able to model the expected crushing forces, contact pressure, and blade torque using hand calculations.</p>
+                
+                <figure>
+                    <img src="project7-3.png" alt="Labelled section-view of blade mill" class="modal-img" style="width: 100%; max-height: none;">
+                    <figcaption>Labelled section view of the blade mill.</figcaption>
+                </figure>
+
+                <p>I designed all of the major components parametrically in SolidWorks and applied DFA/DFM principles to ensure compatibility with 3D printing, laser cutting, and metal machining. I also incorporated an interlocking mechanism with rubber seals to enable quick loading while meeting the strict safety requirements for parabolic flight testing.</p>
+                
+                <figure>
+                    <img src="project7-4.png" alt="Drawing of custom shaft" class="modal-img" style="width: 100%; max-height: none;">
+                    <figcaption>Detailed drawing made using Solidworks for the custom shaft.</figcaption>
+                </figure>
+            
+            </div>
+
+            <div class="modal-section">
+                <h2>Testing</h2>
+                <p>For parabolic flight testing in November 2025, the custom design shown in the images above was built primarily with commercial off-the-shelf (COTS) components to simplify the safety approval process. This was then placed in a dust enclosure and mounted inside a Pelican case, alongside a ball mill and mortar mill designed by other team members.</p>
+                
+                <figure>
+                    <img src="project7-5.png" alt="COTS implementation of blade mill" class="modal-img" style="width: 100%; max-height: none;">
+                    <figcaption>COTS blender and Pelican case containing all 3 milling devices.</figcaption>
+                </figure>
+
+                <figure>
+                    <img src="project7-6.png" alt="Inside of parabolic flight test aircraft" class="modal-img" style="width: 100%; max-height: none;">
+                    <figcaption>Connor MacRobbie and I sitting inside the NRC's parabolic flight jet with the milling devices.</figcaption>
+                </figure>
+
+                <p>As of August 2026, I remain involved with lunar regolith research at LEER, with a current focus on magnetic separation and combustion reactions.</p>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>

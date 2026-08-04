@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bipedal Exosuit | Sayan Saha</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.1.1/model-viewer.min.js"></script>
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+
+    <nav>
+        <div class="nav-links">
+            <a href="index.html#about">About</a>
+            <a href="index.html#projects">Projects</a>
+            <a href="index.html#resume">Resume</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+    </nav>
+
+    <section class="section">
+        <!-- Return Button -->
+        <a href="index.html#projects" class="download-btn">&larr; Return to Projects</a>
+        
+        <div class="project-page-content">
+            <h2>Bipedal Exosuit</h2>
+
+            <div class="modal-section">             
+                <model-viewer 
+                    src="exosuit.glb" 
+                    alt="3D model of the exosuit" 
+                    auto-rotate 
+                    exposure="0.8"
+                    camera-controls 
+                    shadow-intensity="1"
+                    class="project-model">
+                </model-viewer>
+            </div>
+
+            <div class="modal-section">
+                <h2>Project Overview</h2>
+                <p>Inspired by the film Avatar, I designed a 7-feet tall mechanical exosuit to augment natural human motions.
+                   I began with some concept sketches, which I turned into a full CAD model in Fusion 360 to scale the exosuit to my dimensions.
+                   I also built scale models of the joints and linkages as a proof-of-concept before building the full-scale exosuit.
+                </p>
+
+                <div class="image-row">
+                <figure>
+                    <img src="project4-1.jpeg" alt="Avatar inspiration" class="modal-img">
+                    <figcaption>Exosuit from Avatar. Credit: 20th Century Studios.</figcaption>
+                </figure>
+                <figure>
+                    <img src="project4-2.png" alt="CAD model" class="modal-img">
+                    <figcaption>Fusion 360 CAD model.</figcaption>
+                </figure>
+                <figure>
+                    <img src="project4-3.jpg" alt="Final exosuit" class="modal-img">
+                    <figcaption>Complete exosuit.</figcaption>
+                </figure>
+                </div>
+            
+            </div>
+
+            <div class="modal-section">
+                <h2>Build Process</h2>
+                
+                <p>The exosuit was constructed around a wooden load-bearing skeleton with an upper torso and lower stilts.
+                   The torso was attached to a backpack with adjustable straps, which allowed it to be worn by users of different heights.
+                   To reduce weight, I used PCV piping for longer sections of the skeleton, such as the shins and shoulders.
+                   Since the stilts had to support the weight of the user and all other parts of the exosuit, I conducted stress testing to ensure a safety factor of 3.0x my body weight.
+                </p>
+
+                <div class="image-row">
+                <figure>
+                    <img src="project4-4.jpg" alt="Wooden skeleton" class="modal-img">
+                    <figcaption>Torso skeleton.</figcaption>
+                </figure>
+                <figure>
+                    <img src="project4-5.jpg" alt="Carboard shell" class="modal-img">
+                    <figcaption>Cardboard shell.</figcaption>
+                </figure>
+                </div>
+
+
+                <p>After building the skeleton, I created 2D nets of the outer shell from the CAD model and reconstructed it using cardboard.
+                   This was much more cost-effective than 3D printing and also resulted in a far lighter exosuit.
+                   Before applying paint, I applied body filler to all of the seams and sanded it to achieve a smooth finish.
+                </p>
+
+                <div class="image-row">
+                <figure>
+                    <img src="project4-6.jpg" alt="Exosuit with body filler applied" class="modal-img">
+                    <figcaption>Exosuit after body filling.</figcaption>
+                </figure>
+                <figure>
+                    <img src="project4-7.jpg" alt="Sayan painting the exosuit" class="modal-img">
+                    <figcaption>Painting the exosuit.</figcaption>
+                </figure>
+                <figure>
+                    <img src="project4-8.jpg" alt="Balance testing of the exosuit" class="modal-img">
+                    <figcaption>Balance testing of the legs.</figcaption>
+                </figure>
+                </div>                
+
+                <p>The most challenging aspect of this project was making it stable enough to walk in, which I achieved by lowering the center of gravity and increasing the width of the stilts. 
+                   Ultimately, this allowed me to comfortably walk for 2 hours at the Parade of Wonders in Calgary, Alberta. It also looked pretty cool!
+                </p>
+
+                <figure>
+                    <img src="project4-9.png" alt="Promo shot of exosuit" class="modal-img" style="width: 100%; max-height: none;">
+                    <figcaption>One of my favourite pictures of the exosuit!</figcaption>
+                </figure>
+
+
+            </div>
+
+
+
+        </div>
+    </section>
+
+</body>
+</html>

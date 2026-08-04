@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 VTOL Aircraft | Sayan Saha</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+
+    <nav>
+        <div class="nav-links">
+            <a href="index.html#about">About</a>
+            <a href="index.html#projects">Projects</a>
+            <a href="index.html#resume">Resume</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+    </nav>
+
+    <section class="section">
+        <!-- Return Button -->
+        <a href="index.html#projects" class="download-btn">&larr; Return to Projects</a>
+        
+        <div class="project-page-content">
+            <h2>SAE 2026 VTOL Aircraft</h2>
+            
+            <div class="modal-section">
+                <h2>Project Overview</h2>
+                <p>The development of the WatArrow’s first tiltrotor VTOL aircraft to compete in the Advanced Class at SAE Aero Design 2026 was one of the first projects I oversaw while serving as the team’s Technical Director. My biggest contribution was to the design, fabrication, and assembly of the first 2 prototype aircraft. I also helped configure the avionics and ArduPilot for these 2 prototypes alongside Joshua Perry, Yang Li, and Riya Vaidya.</p>
+            </div>
+
+            <div class="modal-section">
+                <h2>Prototype 1</h2>
+                <p>As an initial proof-of-concept, I built a Frankensteined airframe using spare parts from previous aircraft. For example, I used the horizontal stabilizer of a larger aircraft as the wings for Prototype 1. This was acceptable because the goal of Prototype 1 was only to test tricopter hovering capabilities.</p>
+                
+                <figure>
+                    <img src="project6-2.png" alt="Hover testing of Prototype 1" class="modal-img" style="width: 100%; max-height: none;">
+                    <figcaption>Hover test with Prototype 1.</figcaption>
+                </figure>
+
+                <p>The short hover testing we performed with Prototype 1 helped us gain a better understanding of:</p>
+                <ul>
+                    <li>Avionics requirements</li>
+                    <li>Tiltrotor design and placement</li>
+                    <li>Stability challenges</li>
+                    <li>Tricopter PID tuning</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h2>Prototype 2</h2>
+                <p>With the knowledge gained from Prototype 1, I designed Prototype 2 with almost-entirely custom parts, such as a snap-fit wing I designed for easy installation onto an H-shaped carbon fiber frame.</p>
+                
+                <figure>
+                    <img src="project6-thumb.jpg" alt="Prototype 2" class="modal-img" style="width: 100%; max-height: none;">
+                    <figcaption>Prototype 2.</figcaption>
+                </figure>
+
+                <p>One of the more complicated challenges I had to deal with was designing a mounting and wiring system for all the avionics components, since there were many more of them than on traditional fixed-wing aircraft due to the higher number of servos and motors. To simplify this, I designed 3D printed mounts that could be easily swapped out as needed. 
+                   For example, I incorporated a dovetail joint into the flight computer mount, allowing it to easily separate from the battery mount that it was suspended from. The dovetail joint also featured a squeeze-to-release mechanism to help it lock in place during flight.</p>
+                
+                <figure>
+                    <img src="project6-3.png" alt="Avionics mount with dovetail joint" class="modal-img" style="width: 100%; max-height: none;">
+                    <figcaption>Flight computer and battery mount, with a dovetail joint connecting the two.</figcaption>
+                </figure>
+
+                <p>The bring-up process for systems like the motor-tilt mechanism also proved to be challenging, because it was my first time using a flight computer running ArduPilot. After lots of troubleshooting with the rest of the team, we were able to figure it out and conduct some more advanced vertical flight tests.</p>
+                
+                <p>Ultimately, we did not end up using Prototype 2 for conventional flight, but it helped inform the design of future prototypes, culminating in the final WatArrow Advanced Class competition aircraft for SAE Aero Design 2026.</p>
+           
+                <figure>
+                    <img src="project6-4.jpg" alt=" mount with dovetail joint" class="modal-img" style="width: 100%; max-height: none;">
+                    <figcaption>WatArrow Advanced Class competition aircraft for SAE Aero Design 2026.</figcaption>
+                </figure>
+
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>
