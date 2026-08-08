@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DC-DC DAB Converter | Sayan Saha</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-links">
+            <a href="index.html#about">About</a>
+            <a href="index.html#projects">Projects</a>
+            <a href="index.html#resume">Resume</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+    </nav>
+
+    <section class="section">
+        <!-- Return Button -->
+        <a href="index.html#projects" class="download-btn">&larr; Return to Projects</a>
+        
+        <div class="project-page-content">
+            <h2>50W DC-DC Dual Active Bridge Converter</h2>
+            
+            <figure>
+                <img src="project8-thumb.jpg" alt="DAB converter PCB" class="modal-img" style="width: 100%; max-height: none;">
+            </figure>
+
+            <div class="modal-section">
+                <h2>Project Overview</h2>
+                <p>My project collaborator, Margaux Lari, and I designed a 50W DC-DC Dual Active Bridge (DAB) converter from scratch. Both of us were equally involved with theoretical calculations, PLECs simulations, Altium PCB design, soldering, and bench testing.
+                   The design was based on <a href="https://www.ti.com/lit/ug/tidues0c/tidues0c.pdf" target="_blank" rel="noopener noreferrer">this</a> Texas Instruments reference design.</p>
+                
+            </div>
+
+            <div class="modal-section">
+                <h2>Design Specifications</h2>
+                <ul>
+                    <li>Nominal output power: 50 W</li>
+                    <li>Input voltage range: 30 V to 60 V (Nominal: 50 V)</li>
+                    <li>Target output voltage: 12 V</li>
+                    <li>Switching frequency: 30 kHz</li>
+                    <li>Maximum output voltage ripple: 2%</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h2>Sizing and Simulations</h2>
+                
+                <h3>Inductor Sizing</h3>
+                <div class="equation-container">
+                    \[
+                    L = \frac{n V_{pri} V_{sec} \varphi_{Pmax}(\pi - |\varphi_{Pmax}|)}{2\pi^2 f_{sw} P_{max}} = \frac{\frac{50}{12} \times 50 \times 12 \times \frac{\pi}{2}(\pi - \frac{\pi}{2})}{2\pi^2 \times 30000 \times 150} = 69.44 \mu\text{H}
+                    \]
+                </div>
+                <p>For the input voltage range of 30-60V, we calculated a required inductance of 69 &mu;H and phase shift range of 0.24-0.52 rad using the DAB power transfer equation.</p>
+                
+                <h3>Capacitor Sizing</h3>
+                <p>Under a worst-case input of 30V, we sized the output capacitance to 576 &mu;F by determining the charge fluctuation over one switching period due to the full-bridge current. Modelling this in PLECs allowed us to obtain simulated full-bridge current plots, which we used to validate the plots from our calculations.
+                   We performed similar calculations and simulations to size the DC blocking capacitance, input capacitance, and discharge resistance.
+                </p>
+
+                <div class="image-row">
+                    <!-- Left Image + Caption -->
+                    <figure>
+                        <img src="project8-3.png" alt="Full-bridge current plot from calculations" class="modal-img">
+                        <figcaption>Full-bridge current plot from calculations.</figcaption>
+                    </figure>
+                    <!-- Right Image + Caption -->
+                    <figure>
+                        <img src="project8-2.png" alt="Full-bridge current plot from PLECs simulations" class="modal-img">
+                        <figcaption>Full-bridge current plot from PLECs simulation.</figcaption>
+                    </figure>
+                </div>
+                
+                <h3>Validation</h3>
+                <p>Afer sizing all the inductances and capacitances, we modelled the entire power stage of the converter in PLECs to confirm V/I waveforms, output ripple, and the minimum phase-shift threshold for zero-voltage switching (&phi; > 0.63).</p>
+                
+                <figure>
+                    <img src="project8-4.png" alt="PLECs simulation waveforms" class="modal-img" style="width: 100%; max-height: none;">
+                    <figcaption>PLECs simulation of the power stage showing a 12V output with 0.58% ripple, which satisfies the targets.</figcaption>
+                </figure>
+            
+            </div>
+
+            <div class="modal-section">
+                <h2>Semi-Conductor Selection</h2>
+                <p>We selected the Nexperia PHP18NQ11T and Infineon IRLB8743PbF MOSFETS for the primary and secondary bridge circuits, respectively. These were chosen to ensure:</p>
+                <ul>
+                    <li>V<sub>ds,max</sub> > V<sub>bridge,max</sub></li>
+                    <li>I<sub>cont</sub> > I<sub>bridge,max</sub></li>
+                    <li>R<sub>ds,on</sub> is as low as possible to minimize losses</li>
+                </ul>
+                <p>Using the datasheet of the MOSFETS and our converter's parameters, we calculated the MOSFET currents and switching losses, giving us a predicted semiconductor efficiency of 94.9%.</p>
+            </div>
+
+            <div class="modal-section">
+                <h2>Custom Transformer</h2>
+                <h3>Component Selection</h3>
+                <div class="equation-container">
+                    \[
+                    K_{gfe} \geq \frac{\rho \lambda_1^2 I_{tot}^2 K_{fe}^{(2/\beta)}}{4 K_u P_{tot}^{((\beta+2)/\beta)}} = 1.01 \times 10^{-3} \text{cm}^5
+                    \]
+                </div>
+                <p>We selected a ETD39/20/13 core with N87 ferrite material using the K<sub>gfe</sub> method, keeping peak flux density below the 0.30 T saturation limit. Our target primary winding turn ratio was 4.2, with an additional auxiliary winding turn ratio of 2.8 to power the secondary side power stage.</p>
+                
+                <p>The chosen core provided us with constraints on the available winding area and mean length of turns. Then, based on a target current density of 300 A/cm<sup>2</sup>, we selected the following winding wires:</p>
+                <ul>
+                    <li>Primary: M2 (current density of 219.05 A/cm<sup>2</sup>)</li>
+                    <li>Secondary: L4 (current density of 229.88 A/cm<sup>2</sup>)</li>
+                    <li>Auxiliary: M1 (current density of 242.42 A/cm<sup>2</sup>)</li>
+                </ul>
+                <p>By optimizing our design for its window utilization factor, we predicted copper and core loss of 0.98 W.</p>
+                
+                <h3>Testing</h3>
+                
+                <p>After winding the transformer by hand, we performed the following validation tests:</p>
+                <ul>
+                    <li>Open circuit test with an LCR meter to determine a magnetizing inductance of 4.996 mH</li>
+                    <li>Short circuit test with an LCR meter to determine a leakage inductance of 10.58 &mu;H</li>
+                    <li>Saturation test with a power choke meter to determine a saturation limit of 0.11 A</li>
+                    <li>Turn ratio test with an oscilloscope to determine an achieved primary turn ratio of 4.97</li>
+                    <li>Heat run test with a thermal camera to determine a temperature of 31&deg;C after operating for 15 minutes</li>
+                </ul>
+                <figure>
+                    <img src="project8-5.png" alt="Transformer" class="modal-img" style="width: 100%; max-height: none;">
+                    <figcaption>Custom transformer fully assembled.</figcaption>
+                </figure>
+            </div>
+
+            <div class="modal-section">
+                <h2>Custom Inductor</h2>
+                <h3>Component Selection</h3>
+                <p>Based on our transformer's measured leackage inductance, we calculated that a 58.86 &mu;H external inductance would be required to achieve our total desired inductance of 69 &mu;H.
+                </p>
+                <p>   
+                    We selected a T157-2 core because it provided a reasonable compromise between the:
+                </p>    
+                <ul>
+                    <li>Number of turns required (lower being better to minimiz copper losses)</li>
+                    <li>magnitude in inductance of each step (lower being better for more precise control over the total inductance)</li>
+                </ul>
+                <h3>Testing</h3>
+                
+                <p>After winding the inductor, by hand, we performed the following validation tests:</p>
+                <ul>
+                    <li>Inductance test with an LCR meter to determine an achieved inductance of 59.43 &mu;H</li>
+                    <li>Saturation test with a power choke meter to verify the inductor does not saturate under normal operating conditions</li>
+                </ul>
+
+                <figure>
+                    <img src="project8-6.png" alt="Inductor" class="modal-img" style="width: 100%; max-height: none;">
+                    <figcaption>Saturation test on custom inductor.</figcaption>
+                </figure>
+            
+            </div>
+
+            <div class="modal-section">
+                <h2>Schematic Design</h2>
+                <p>We selected resistors, capacitors, and other components from DigiKey and Mouser using the E96 standard values and a 1206 footprint size. In many cases, we had to make practical considerations, such as putting capacitors in parallel to achieve the theoretical values we previously sized.</p>
+                
+                <p>Then, we designed a schematic in Altium with the following sections:</p>
+                <ul>
+                    <li>Power stage circuit with MOSFETS, transformer, inductor, and capacitor banks to filter ripples</li>
+                    <li>Gate driving circuit with UCC27288 dual-channel gate drivers</li>
+                    <li>Auxiliary power supply circuit using DC-DC regulators to provide stable 12V and 3.3V</li>
+                    <li>Current sensing circuits using a shunt resistor, INA201 amplifier, and first order low pass filters with a cutoff frequency of 1.59 kHz to attenuate 30 kHz switching noise</li>
+                    <li>Voltage sensing circuits using a voltage divider and MCP6241 amplifier</li>
+                </ul>
+
+                <figure>
+                    <img src="project8-7.png" alt="Schematic" class="modal-img" style="width: 100%; max-height: none;">
+                    <figcaption>Schematic of DAB converter.</figcaption>
+                </figure>
+
+            </div>
+
+            <div class="modal-section">
+                <h2>PCB Layout</h2>
+                <p>Using Altium, we designed a 2-layer PCB. The primary considerations were:</p>
+                <ul>
+                    <li>Separating the board into different sub-circuits for simpler debugging</li>
+                    <li>Sizing traces to ensure a current density below 35 A/mm<sup>2</sup></li>
+                    <li>Ensuring it would be easy to solder by hand</li>
+                </ul>
+
+                <figure>
+                    <img src="project8-8.png" alt="PCB layout" class="modal-img" style="width: 100%; max-height: none;">
+                    <figcaption>Altium PCB Layout.</figcaption>
+                </figure>
+
+
+            </div>
+
+            <div class="modal-section">
+                <h2>Bring-Up</h2>
+                <p>Before connecting the Texas Instruments F28335 digital controller to our PCB for output voltage regulation based on a PLECs model of the converter, we ran offline simulations. These helped us validate soft-start implementation and provided us with deadtime estimates of 39 ns and 24 ns for the primary and secondary sides, respectively. We were also able to simulate the open loop response of the converter to variations in input voltage.</p>
+                
+                <div class="image-row">
+                    <!-- Left Image + Caption -->
+                    <figure>
+                        <img src="project8-9.png" alt="PLECs soft-start logic" class="modal-img">
+                        <figcaption>PLECSs soft-start logic implementation.</figcaption>
+                    </figure>
+                    <!-- Right Image + Caption -->
+                    <figure>
+                        <img src="project8-10.png" alt="Simulation results" class="modal-img">
+                        <figcaption>Simulation showing duty cycle ramp-up.</figcaption>
+                    </figure>
+                </div>
+
+                <p>For hardware bring-up, we soldered and tested each sub-circuit independently using tools such as an oscilloscope, electronic load, and thermal camera.</p>
+                <figure>
+                    <img src="project8-11.jpg" alt="Open-loop testing" class="modal-img" style="width: 100%; max-height: none;">
+                    <figcaption>Open-loop testing with an oscilloscope, digital load, and DC power supply.</figcaption>
+                </figure>
+            
+            </div>
+
+            <div class="modal-section">
+                <h2>Results</h2>
+                <p>The final converter achieved an output of 4.13 A at 11.89 V under a nominal input of 1.19 A at 50 V. This translates to an efficiency of 83%. A future step would be to implement closed-loop control to automatically adjust the phase shift in response to varying input voltages.</p>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>
