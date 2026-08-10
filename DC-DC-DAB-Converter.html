@@ -62,7 +62,17 @@
                 <p>For the input voltage range of 30-60V, we calculated a required inductance of 69 &mu;H and phase shift range of 0.24-0.52 rad using the DAB power transfer equation.</p>
                 
                 <h3>Capacitor Sizing</h3>
-                <p>Under a worst-case input of 30V, we sized the output capacitance to 576 &mu;F by determining the charge fluctuation over one switching period due to the full-bridge current. Modelling this in PLECs allowed us to obtain simulated full-bridge current plots, which we used to validate the plots from our calculations.
+                <p>Under a worst-case input of 30V, we sized the output capacitance to 576 &mu;F by determining the charge fluctuation over one switching period due to the full-bridge current. 
+                </p>
+                <div class="equation-container">
+                    \[
+                    \Delta U_{out} = \Delta U_{out,pp,rel} \times U_{out} = 0.24\text{V}
+                    \]
+                    \[
+                    C_{out} = \frac{\Delta Q}{\Delta U_{out}} = 576.89\mu\text{F} 
+                    \]
+                </div>
+                <p>Modelling this in PLECs allowed us to obtain simulated full-bridge current plots, which we used to validate the plots from our calculations.
                    We performed similar calculations and simulations to size the DC blocking capacitance, input capacitance, and discharge resistance.
                 </p>
 
@@ -80,8 +90,14 @@
                 </div>
                 
                 <h3>Validation</h3>
-                <p>Afer sizing all the inductances and capacitances, we modelled the entire power stage of the converter in PLECs to confirm V/I waveforms, output ripple, and the minimum phase-shift threshold for zero-voltage switching (&phi; > 0.63).</p>
+                <p>Afer sizing all the inductances and capacitances, we modelled the entire power stage of the converter in PLECs to confirm V/I waveforms, output ripple, and the minimum phase-shift threshold for zero-voltage switching.</p>
                 
+                <div class="equation-container">
+                    \[
+                    \varphi_{ZVS,pri} > \frac{(1-\frac{1}{d}) \cdot \pi}{2} = 0.63
+                    \]
+                </div>
+
                 <figure>
                     <img src="project8-4.png" alt="PLECs simulation waveforms" class="modal-img" style="width: 100%; max-height: none;">
                     <figcaption>PLECs simulation of the power stage showing a 12V output with 0.58% ripple, which satisfies the targets.</figcaption>
@@ -97,7 +113,30 @@
                     <li>I<sub>cont</sub> > I<sub>bridge,max</sub></li>
                     <li>R<sub>ds,on</sub> is as low as possible to minimize losses</li>
                 </ul>
-                <p>Using the datasheet of the MOSFETS and our converter's parameters, we calculated the MOSFET currents and switching losses, giving us a predicted semiconductor efficiency of 94.9%.</p>
+                <p>Using the datasheet of the MOSFETS and our converter's parameters, we calculated the MOSFET currents and losses due to conduction and switching. Here are sample calculations for the primary side:</p>
+                <div class="equation-container">
+                    \[
+                    P_{Q,pri,cond} = R_{DS,on}(T_j) \cdot I_{Q,pri,rms}^2 = 0.1769\Omega \cdot 1.38 \text{A}^2 = 0.34 \text{W}
+                    \]
+                </div>
+                <div class="equation-container">
+                    \[
+                    P_{Q,pri,off} = f_{sw} \cdot U_{DD} \cdot I_{Doff} \cdot \frac{t_{ru} + t_{fi}}{2} = 30\text{kHz} \cdot 60\text{V} \cdot 1.92\text{A} \cdot \frac{8\text{ns} + 12\text{ns}}{2} = 17.28\text{mW}
+                    \]
+                </div>
+ 
+
+                <p>Considering all 8 MOSFETs, we predicted a semiconductor efficiency of 94.9%:</p>
+                <div class="equation-container">
+                    \[
+                    P_{losses} = 4 \cdot (P_{Q,pri,cond} + P_{Q,pri,off}) + 4 \cdot (P_{Q,sec,cond} + P_{Q,sec,off}) = 2.68\text{W}
+                    \]
+                    \[
+                    \eta = \frac{P_{out}}{P_{out} + P_{losses}} = \frac{50\text{W}}{50\text{W} + 2.68\text{W}} = 94.91\%
+                    \]
+                </div>
+
+
             </div>
 
             <div class="modal-section">
@@ -108,15 +147,37 @@
                     K_{gfe} \geq \frac{\rho \lambda_1^2 I_{tot}^2 K_{fe}^{(2/\beta)}}{4 K_u P_{tot}^{((\beta+2)/\beta)}} = 1.01 \times 10^{-3} \text{cm}^5
                     \]
                 </div>
-                <p>We selected a ETD39/20/13 core with N87 ferrite material using the K<sub>gfe</sub> method, keeping peak flux density below the 0.30 T saturation limit. Our target primary winding turn ratio was 4.2, with an additional auxiliary winding turn ratio of 2.8 to power the secondary side power stage.</p>
-                
+                <p>We selected a ETD39/20/13 core with N87 ferrite material using the K<sub>gfe</sub> method, keeping peak flux density below the 0.30 T saturation limit.</p>
+                <p>Based on the input/output ratio, we calculated the following primary and auxiliary turn ratios:</p>
+                <div class="equation-container">
+                    \[
+                    n = \frac{V_{pri}}{V_{sec}} = \frac{50\text{V}}{12\text{V}} = 4.17
+                    \]
+                    \[
+                    n_{aux} = \frac{V_{pri}}{V_{aux}} = \frac{50\text{V}}{18\text{V}} = 2.78
+                    \]
+                </div>
                 <p>The chosen core provided us with constraints on the available winding area and mean length of turns. Then, based on a target current density of 300 A/cm<sup>2</sup>, we selected the following winding wires:</p>
                 <ul>
                     <li>Primary: M2 (current density of 219.05 A/cm<sup>2</sup>)</li>
                     <li>Secondary: L4 (current density of 229.88 A/cm<sup>2</sup>)</li>
                     <li>Auxiliary: M1 (current density of 242.42 A/cm<sup>2</sup>)</li>
                 </ul>
-                <p>By optimizing our design for its window utilization factor, we predicted copper and core loss of 0.98 W.</p>
+                <p>By optimizing our design for its window utilization factor, we predicted copper and core loss of 0.98 W:</p>
+                <div class="equation-container">
+                    \[
+                    P_{core} = 0.35\text{W (from data sheet)}
+                    \]
+                    \[
+                    P_{Cu,DC} = R_{DC,pri}I_{RMS,pri}^2 + R_{DC,sec}I_{RMS,sec}^2 + R_{DC,aux}I_{RMS,aux}^2 = 0.0793\Omega \cdot (1.38\text{A})^2 + 0.0074\Omega \cdot (5.77\text{A})^2 + 0.0541\Omega \cdot (0.8\text{A})^2 = 0.34\text{W}
+                    \]
+                    \[
+                    P_{Cu,AC} = R_{AC,pri}I_{RMS,pri}^2 + R_{AC,sec}I_{RMS,sec}^2 + R_{AC,aux}I_{RMS,aux}^2 = 0.0468\Omega \cdot (1.38\text{A})^2 + 0.00556\Omega \cdot (5.77\text{A})^2 + 0.023\Omega \cdot (0.8\text{A})^2 = 0.29\text{W}
+                    \]
+                    \[
+                    P_{loss,WC} = P_{core} + P_{Cu,DC} + P_{Cu,AC} = 0.35\text{W} + 0.34\text{W} + 0.29\text{W} = 0.98\text{W}
+                    \]
+                </div>
                 
                 <h3>Testing</h3>
                 
@@ -137,8 +198,13 @@
             <div class="modal-section">
                 <h2>Custom Inductor</h2>
                 <h3>Component Selection</h3>
-                <p>Based on our transformer's measured leackage inductance, we calculated that a 58.86 &mu;H external inductance would be required to achieve our total desired inductance of 69 &mu;H.
+                <p>Based on our transformer's measured leackage inductance, we calculated that a 58.86 &mu;H external inductance would be required to achieve our total desired inductance of 69 &mu;H:
                 </p>
+                <div class="equation-container">
+                    \[
+                    L_{ext} = L - L_{leak,tot,pri} = 69.44\mu\text{H} - 10.58\mu\text{H} = 58.86\mu\text{H}
+                    \]
+                </div>
                 <p>   
                     We selected a T157-2 core because it provided a reasonable compromise between the:
                 </p>    

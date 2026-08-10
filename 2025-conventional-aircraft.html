@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="favicon.png">
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
 
@@ -33,8 +34,60 @@
 
             <div class="modal-section">
                 <h2>Project Overview</h2>
-                <p>This was WatArrow’s Micro Class competition aircraft for SAE Aero Design East 2025. I was involved with design and manufacturing alongside other members of our team. Two of the more technically challenging projects I was responsible for were landing gear development and wing structural analysis. Both projects required me to learn new skills, like SolidWorks Flow Simulation and FEA.</p>
+                <p>This was WatArrow’s Micro Class competition aircraft for SAE Aero Design East 2025. My two main contributions were:</p>
+                <ul>
+                    <li>Wing structural analysis</li>
+                    <li>Landing gear development</li>
+                </ul>
             </div>
+
+            <div class="modal-section">
+                <h2>Wing Structural Analysis</h2>
+                <p>I was responsible for conducting structural analysis of the wing using hand calculations, SolidWorks Flow Simulation, and FEA. I used the flow simulation to determine the following conditions for maximum lift (and thus maximum stress):</p>
+                <ul>
+                    <li>Angle of attack of 4° (corresponding to a coefficient of lift of 0.45)</li>
+                    <li>Speed of 17 m/s</li>
+                </ul>
+                <p>Solving the lift equation for these conditions provided a maximum lift of 18N, which is just above the fully-loaded aircraft weight of 16N:</p>
+                    
+                <div class="equation-container">
+                    \[
+                    L = \frac{1}{2} \cdot C_L \cdot \rho \cdot V^2 \cdot A = \frac{1}{2} \cdot 0.45 \cdot 1.225 \text{kg}/\text{m}^3 \cdot (17 \text{m/s})^2 \cdot 0.225 \text{m}^3 = 18 \text{N}
+                    \]
+                </div>
+                <p>Since the wing had multiple interfaces between balsa wood ribs, a carbon fiber tube, and 3D printed mounts, I used FEA to model the deflection at the tips and validated the results with a simplified hand calculation focusing only on the carbon fiber tube. 
+                   It is important to note that all the analysis made major assumptions about the elastic modulus of balsa wood, carbon fiber, and 3D prints, since the strength of these materials can vary significantly based on grain direction, fabrication technique, and other conditions.
+                   I used a safety factor 2.0 for both the FEA and hand calculations, so the applied forces were a lift force of 36N and weight of 32N.</p>
+                <p>For FEA in SolidWorks, I applied the lift force as a distributed load on the underside of each rib and the weight as a point load at the aircraft's CG. Applying loads in these locations allowed for simplification of the simulation CAD, which made the simulations much faster to run. 
+                   Simulation results of an initial design of the wing revealed that it would deflect by 20mm at the tips, so I suggested lengthening the internal carbon fiber spar to enhance the rigidity of the outermost balsa ribs. 
+                   I validated this with another simulation, which showed a deflection of 2mm, or a reduction of 90%.
+                </p>
+                <div class="image-row">
+                    <!-- Left Image + Caption -->
+                    <figure>
+                        <img src="project3-8.png" alt="Deflection" class="modal-img">
+                        <figcaption>Deflection distribution across wing.</figcaption>
+                    </figure>
+                    <!-- Right Image + Caption -->
+                    <figure>
+                        <img src="project3-9.png" alt="Stress" class="modal-img">
+                        <figcaption>Stress distribution across wing.</figcaption>
+                    </figure>
+                </div>    
+                <p>
+                   As a sanity check, I did a conservative hand calculation assuming that the wing was a 0.9m long carbon fiber tube with an elastic modulus of 170 GPa (the same value used for FEA).
+                   The obtained deflection of 3.23mm was reasonable and comparable to the FEA results.
+                </p>
+                   <div class="equation-container">
+                        \[
+                        I = \frac{\pi}{64} (D_{out}^4 - D_{in}^4) = \frac{\pi}{64} ((0.01\text{ m})^4 - (0.007\text{ m})^4) = 3.73 \times 10^{-10}\text{ m}^4
+                        \]
+                        \[
+                        \delta = \frac{w \cdot L_{arm}^4}{8EI} = \frac{40\text{ N/m} \cdot (0.45\text{ m})^4}{8 \cdot (170 \times 10^9\text{ N/m}^2) \cdot (3.73 \times 10^{-10}\text{ m}^4)} = 3.23\text{ mm}
+                        \]
+                    </div>
+            </div>
+       
 
             <div class="modal-section">
                 <h2>Landing Gear Development</h2>
@@ -113,31 +166,6 @@
                 <img src="project3-7.png" alt="Final landing gear" class="modal-img" style="width: 100%; max-height: none;">
                 <figcaption>Final landing gear with wheels and 3D printed wing mount.</figcaption>
             </figure>
-
-            <div class="modal-section">
-                <h2>Wing Structural Analysis</h2>
-                <p>I was responsible for conducting structural analysis of the wing using SolidWorks Flow Simulation and FEA. I used the flow simulation to determine the following conditions for maximum lift (and thus maximum stress):</p>
-                <ul>
-                    <li>Angle of attack of 4° (corresponding to a coefficient of lift of 0.45)</li>
-                    <li>Speed of 17 m/s</li>
-                </ul>
-                <p>Solving the lift equation for these conditions provided a maximum lift of 18N, which is just above the fully-loaded aircraft weight of 16N. I applied a safety factor of 2 to both of these loads during FEA. As such, I applied a lift force of 36N to the ribs of the wing and a weight of 32N to the underside of the wing mount (which contains the aircraft’s center of gravity). Applying loads in these locations allowed for simplification of the simulation CAD, which made the simulations much faster to run.</p>
-                <p>The material I chose for the wing spar in the simulation was Mat VMA carbon fiber, which has an elastic modulus of 170 GPa and ultimate tensile strength of 1.4 GPa. Similar to the landing gear simulations described previously, this was a major assumption since the properties of carbon fiber vary greatly with fabrication techniques, and the exact techniques used in the fabrication of the spars is unknown since they were not made in-house.</p>
-                <p>Simulation results of an initial design of the wing revealed that it would rapidly deflect at the edges, so I suggested lengthening the internal carbon fiber spar to enhance rigidity. I validated this with another simulation, which showed a 90% reduction in deflections.</p>
-            </div>
-
-            <div class="image-row">
-                <!-- Left Image + Caption -->
-                <figure>
-                    <img src="project3-8.png" alt="Deflection" class="modal-img">
-                    <figcaption>Deflection distribution across wing.</figcaption>
-                </figure>
-                <!-- Right Image + Caption -->
-                <figure>
-                    <img src="project3-9.png" alt="Stress" class="modal-img">
-                    <figcaption>Stress distribution across wing.</figcaption>
-                </figure>
-            </div>            
 
             <div class="modal-section">
                 <h2>Competition</h2>
